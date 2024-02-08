@@ -70,7 +70,7 @@ export const ServerSideBar = async ({ serverId }: ServerSideBarProps) => {
   );
 
   const members = server?.members?.filter(
-    (member) => member.profileId === profile.id
+    (member) => member.profileId !== profile.id
   );
 
   if (!server) {
@@ -80,6 +80,7 @@ export const ServerSideBar = async ({ serverId }: ServerSideBarProps) => {
   const role = server?.members?.find(
     (member) => member.profileId === profile.id
   )?.role;
+  // console.log("Members", members);
 
   return (
     <div className="flex flex-col h-full text-primary w-full dark:bg-[#2b2d31] bg-[#f2f3f5]">
