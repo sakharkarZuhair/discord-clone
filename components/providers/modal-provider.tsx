@@ -10,6 +10,7 @@ import { EditServerModal } from "@/components/modals/edit-server-modal";
 import { CreateServerModal } from "@/components/modals/create-server-modal";
 import { ManageMembersModal } from "@/components/modals/manage-members-modal";
 import { CreateChannelModal } from "@/components/modals/create-channel";
+import { MessageFileModal } from "../modals/message-file-modal";
 
 export function ModalProvider() {
   const [isMounted, setIsMounted] = useState(false);
@@ -32,6 +33,7 @@ export function ModalProvider() {
       <ManageMembersModal />
       <CreateChannelModal />
       <EditChannel />
+      <MessageFileModal/>
     </>
   );
 }
