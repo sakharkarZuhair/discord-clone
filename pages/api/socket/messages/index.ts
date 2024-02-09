@@ -1,7 +1,7 @@
-import { currentProfilePage } from "@/lib/current-profile-pages";
 import { db } from "@/lib/db";
-import { NextApiResponserServerIo } from "@/types";
 import { NextApiRequest } from "next";
+import { currentProfilePage } from "@/lib/current-profile-pages";
+import { NextApiResponserServerIo } from "@/types";
 
 export default async function handler(
   req: NextApiRequest,
