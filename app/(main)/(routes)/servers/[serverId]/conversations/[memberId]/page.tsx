@@ -1,9 +1,12 @@
 import ChatHeader from "@/components/chat/chat-header";
-import { getOrCreateConversation } from "@/lib/conversation";
-import { currentProfile } from "@/lib/current-profile";
+import ChatInput from "@/components/chat/chat-input";
+import ChatMessages from "@/components/chat/chat-messages";
+
 import { db } from "@/lib/db";
-import { redirectToSignIn } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import { redirectToSignIn } from "@clerk/nextjs/server";
+import { currentProfile } from "@/lib/current-profile";
+import { getOrCreateConversation } from "@/lib/conversation";
 
 interface MemberIdPageProps {
   params: {
@@ -29,8 +32,6 @@ const MemberId = async ({ params }: MemberIdPageProps) => {
     },
   });
 
-  // console.log("Current Member", currentMember);
-
   if (!currentMember) {
     return redirect("/");
   }
@@ -39,8 +40,6 @@ const MemberId = async ({ params }: MemberIdPageProps) => {
     currentMember.id,
     params.memberId
   );
-
-  // console.log("Conversation", conversation);
 
   if (!conversation) {
     return redirect(`/servers/${params?.serverId}`);
@@ -58,6 +57,23 @@ const MemberId = async ({ params }: MemberIdPageProps) => {
         name={otherMember.profile.name}
         serverId={params?.serverId}
         type="conversation"
+      />
+      <ChatMessages
+        member={currentMember}
+        name={profile.name}
+        chatId={conversation?.id}
+        type="conversation"
+        apiUrl="/api/direct-messages"
+        paramKey="conversationId"
+        paramValue={conversation.id}
+        socketUrl="/api/socket/direct-messages"
+        socketQuery={{ conversationId: conversation?.id }}
+      />
+      <ChatInput
+        type="conversation"
+        name={otherMember.profile.name}
+        apiUrl="/api/socket/direct-messages"
+        query={{ conversationId: conversation.id }}
       />
     </div>
   );
