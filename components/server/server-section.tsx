@@ -1,6 +1,6 @@
 "use client";
 
-import { ServerWithMembersWithProfile } from "@/types";
+import { ServerWithMembersWithProfiles } from "@/types";
 import { ChannelType, MemberRole } from "@prisma/client";
 import ActionTooltip from "../action-tooltip";
 import { Plus, Settings } from "lucide-react";
@@ -11,7 +11,7 @@ interface ServerSectionProps {
   role?: MemberRole;
   sectionType: "channels" | "members";
   channelType?: ChannelType;
-  server?: ServerWithMembersWithProfile;
+  server?: ServerWithMembersWithProfiles;
 }
 
 export const ServerSection = ({

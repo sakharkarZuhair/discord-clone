@@ -39,7 +39,7 @@ import { useModal } from "@/hooks/user-modal-store";
 import { useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MemberRole } from "@prisma/client";
-import { ServerWithMembersWithProfile } from "@/types";
+import { ServerWithMembersWithProfiles } from "@/types";
 import { useRouter } from "next/navigation";
 
 const roleIconMap = {
@@ -56,7 +56,7 @@ export const ManageMembersModal = () => {
   const [loadingId, setLoadingId] = useState("");
 
   const isModalOpen = isOpen && type === "members";
-  const { server } = data as { server: ServerWithMembersWithProfile };
+  const { server } = data as { server: ServerWithMembersWithProfiles };
 
   const onKick = async (memberId: string) => {
     try {
