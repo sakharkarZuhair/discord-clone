@@ -41,6 +41,8 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     return () => {
       socketInstance.disconnect();
     };
+
+    
   }, []);
   return (
     <SocketContext.Provider value={{ socket, isConnected }}>

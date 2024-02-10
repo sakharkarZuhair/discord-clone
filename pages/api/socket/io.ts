@@ -1,8 +1,8 @@
 import { Server as NetServer } from "http";
 import { NextApiRequest } from "next";
-import { Server as ServerID } from "socket.io";
+import { Server as ServerIO } from "socket.io";
 
-import { NextApiResponserServerIo } from "@/types";
+import { NextApiResponseServerIo } from "@/types";
 
 export const config = {
   api: {
@@ -10,16 +10,19 @@ export const config = {
   },
 };
 
-const ioHandler = (req: NextApiRequest, res: NextApiResponserServerIo) => {
+const ioHandler = (req: NextApiRequest, res: NextApiResponseServerIo) => {
   if (!res.socket.server.io) {
     const path = "/api/socket/io";
     const httpServer: NetServer = res.socket.server as any;
-    const io = new ServerID(httpServer, {
+    const io = new ServerIO(httpServer, {
       path: path,
       addTrailingSlash: false,
     });
     res.socket.server.io = io;
+
+    console.log("WHAT", io);
   }
+
   res.end();
 };
 

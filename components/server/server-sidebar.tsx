@@ -98,24 +98,24 @@ export const ServerSideBar = async ({ serverId }: ServerSideBarProps) => {
                   icon: iconMap[channel.type],
                 })),
               },
-              {
-                label: "Voice Channels",
-                type: "channel",
-                data: audioChannels?.map((channel) => ({
-                  id: channel.id,
-                  name: channel.name,
-                  icon: iconMap[channel.type],
-                })),
-              },
-              {
-                label: "Video Channels",
-                type: "channel",
-                data: videoChannels?.map((channel) => ({
-                  id: channel.id,
-                  name: channel.name,
-                  icon: iconMap[channel.type],
-                })),
-              },
+              // {
+              //   label: "Voice Channels",
+              //   type: "channel",
+              //   data: audioChannels?.map((channel) => ({
+              //     id: channel.id,
+              //     name: channel.name,
+              //     icon: iconMap[channel.type],
+              //   })),
+              // },
+              // {
+              //   label: "Video Channels",
+              //   type: "channel",
+              //   data: videoChannels?.map((channel) => ({
+              //     id: channel.id,
+              //     name: channel.name,
+              //     icon: iconMap[channel.type],
+              //   })),
+              // },
               {
                 label: "Members",
                 type: "member",
@@ -149,7 +149,7 @@ export const ServerSideBar = async ({ serverId }: ServerSideBarProps) => {
             </div>
           </div>
         )}
-        {!!audioChannels?.length && (
+        {/* {!!audioChannels?.length && (
           <div className="mb-2">
             <ServerSection
               sectionType="channels"
@@ -168,8 +168,8 @@ export const ServerSideBar = async ({ serverId }: ServerSideBarProps) => {
               ))}
             </div>
           </div>
-        )}
-        {!!videoChannels?.length && (
+        )} */}
+        {/* {!!videoChannels?.length && (
           <div className="mb-2">
             <ServerSection
               sectionType="channels"
@@ -188,7 +188,7 @@ export const ServerSideBar = async ({ serverId }: ServerSideBarProps) => {
               ))}
             </div>
           </div>
-        )}
+        )} */}
 
         {!!members?.length && (
           <div className="mb-2">
