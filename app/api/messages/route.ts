@@ -13,6 +13,7 @@ export async function GET(req: Request) {
 
     const cursor = searchParams.get("cursor");
     const channelId = searchParams.get("channelId");
+    // console.log("WOW", channelId)
 
     if (!profile) {
       return new NextResponse("Unauthorised", { status: 401 });
@@ -64,15 +65,15 @@ export async function GET(req: Request) {
       });
     }
 
-    let nextCuresor = null;
+    let nextCursor = null;
 
-    if (messages?.length === MESSAGES_BATCH) {
-      nextCuresor = messages[MESSAGES_BATCH - 1].id;
+    if (messages.length === MESSAGES_BATCH) {
+      nextCursor = messages[MESSAGES_BATCH - 1].id;
     }
 
     return NextResponse.json({
       items: messages,
-      nextCuresor,
+      nextCursor,
     });
   } catch (error) {
     console.log("Messages Get Error", error);
